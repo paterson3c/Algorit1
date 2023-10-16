@@ -1,8 +1,9 @@
 import numpy as np
 
-def min_heapify(h: np.ndarray, i: int, n: int):
+def min_heapify(h: np.ndarray, i: int):
     left = 2 * i + 1
     right = 2 * i + 2
+    n = len(h)
     smallest = i
     
     if left < n and h[left] < h[smallest]:
@@ -11,11 +12,12 @@ def min_heapify(h: np.ndarray, i: int, n: int):
         smallest = right
     if smallest != i:
         h[i], h[smallest] = h[smallest], h[i]
-        min_heapify(h, smallest, n)
+        min_heapify(h, smallest)
+    return
 
 def create_min_heap(h: np.ndarray):
     for i in range(len(h) // 2, -1, -1):
-        min_heapify(h, i, len(h))
+        min_heapify(h, i)
 
 def insert_min_heap(h: np.ndarray, k: int) -> np.ndarray:
     h = np.append(h, k)
@@ -31,11 +33,15 @@ def insert_min_heap(h: np.ndarray, k: int) -> np.ndarray:
 
 
 if __name__ == '__main__':
-    h = np.array([3, 2, 1, 5, 4])
+    h = np.array([3, 2, 1, 7, 8, 4, 10,])
     create_min_heap(h)
     print(h)
 
     h = insert_min_heap(h, 0)
+    print(h)
+    h = insert_min_heap(h, 5)
+    print(h)
+    h = insert_min_heap(h, 9)
     print(h)
 
     
