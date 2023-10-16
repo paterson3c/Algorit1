@@ -19,7 +19,7 @@ def min_heap_sort(h: np.ndarray) -> np.ndarray:
         # Reduce the size of the heap
         h = h[:-1]
         
-        # Rebuild the min heap
+        # rehacer el heap
         heap.min_heapify(h, 0)
     
     return np.array(sorted_array)
